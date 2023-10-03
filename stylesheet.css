@@ -54,7 +54,15 @@
 /* Song Continer */
 .song {
     padding: 5px;
+    font-size: 30px;
     border-bottom: 1px solid gray;
+}
+
+/* Album Art */
+.album-art {
+    width: 50px; /* Set the width of the album image */
+    height: 50px; /* Set the height of the album image */
+    margin-right: 10px; /* Add margin to separate the image from the text */
 }
 
 /* Body */
