@@ -42,8 +42,8 @@
     color: #262626;
 }
 
-/* Playlist Container */
-.playlist {
+/* Box Container */
+.container {
     height: 200px;
     width: 600px;
     overflow-y: scroll;
