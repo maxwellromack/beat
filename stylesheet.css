@@ -58,6 +58,18 @@
     border-bottom: 1px solid gray;
 }
 
+/* DJ Container */
+.dj {
+    padding: 5px;
+    font-size: 30px;
+    border-bottom: 1px solid gray;
+    transition: box-shadow 0.3s; /* Add a smooth transition effect */
+}
+
+.dj:active {
+    box-shadow: 0 0 10px 2px gold; /* Adjust the color and size of the glow as needed */
+}
+
 /* Album Art */
 .album-art {
     width: 50px; /* Set the width of the album image */
