@@ -77,6 +77,22 @@
     margin-right: 10px; /* Add margin to separate the image from the text */
 }
 
+/* Submit Button */
+.submit-button {
+    background-color: greenyellow;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+/* Reset Button */
+.reset-button {
+    background-color: red;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
 /* Body */
 body {
     font-family: Helvetica, sans-serif;
