@@ -39,6 +39,11 @@ function validateTimes() {
 // Show the error pop-up
 function showErrorPopup(errorPopup) {
     errorPopup.style.display = "block";
+
+    // Hide the error pop-up after 10 seconds
+    setTimeout(function() {
+        errorPopup.style.display = "none";
+    }, 10000);
 }
 
 // Add songs to playlist 
