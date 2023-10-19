@@ -59,4 +59,3 @@ function addSong(clickedSong) {
     const currentPlaylist = document.querySelector(".container");
     currentPlaylist.appendChild(newSongElement);
 }
-

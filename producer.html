@@ -18,7 +18,7 @@
             <div>
                 <!-- Current Playlist Block-->
                 <h1>Current Playlist</h1>
-                <div class="container">
+                <div class="container" id="playlist-container">
                     <div class="song">
                         <img src ="img/sample_img.webp" class="album-art">
                         A song
@@ -97,7 +97,6 @@
                 </div>
             </div>
             <!-- Select DJ Block -->
-            <!-- TODO: Javascript to make glowing effect stay active once clicked-->
             <div>
                 <h1>Select DJ</h1>
                 <div class="container">
@@ -139,8 +138,21 @@
                     </div>
                 </div>
             </div>
+            <!-- TODO: Playlist submission when we get database setup-->
             <button class="submit-button">Submit</button>
-            <button class="reset-button">Reset</button>
+            <button class="reset-button" id="reset-button">Reset</button>
+
+            <script>
+                document.getElementById("reset-button").addEventListener("click", function () {
+                    // Get the playlist container
+                    const playlistContainer = document.getElementById("playlist-container");
+        
+                    // Remove all child elements (songs) from the container
+                    while (playlistContainer.firstChild) {
+                        playlistContainer.removeChild(playlistContainer.firstChild);
+                    }
+                });
+            </script>
         </div>
     </body>
 </html>
