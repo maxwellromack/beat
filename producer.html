@@ -3,6 +3,7 @@
     <head>
         <title>Radio Website</title>
         <link rel="stylesheet" href="stylesheet.css">
+        <script src="script.js"></script>
     </head>
     <body>
         <div class="sidebar">
@@ -25,98 +26,73 @@
                             <source src="aud/nice_sound.mp3" type="audio/mp3">
                         </audio>
                     </div>
-                    <div class="song">
-                        <img src ="img/sample_img.webp" class="album-art">
-                        A song
-                        <audio controls>
-                            <source src="aud/nice_sound.mp3" type="audio/mp3">
-                        </audio>
-                    </div>
-                    <div class="song">
-                        <img src ="img/sample_img.webp" class="album-art">
-                        A song
-                        <audio controls>
-                            <source src="aud/nice_sound.mp3" type="audio/mp3">
-                        </audio>
-                    </div>
-                    <div class="song">
-                        <img src ="img/sample_img.webp" class="album-art">
-                        A song
-                        <audio controls>
-                            <source src="aud/nice_sound.mp3" type="audio/mp3">
-                        </audio>
-                    </div>
-                    <div class="song">
-                        <img src ="img/sample_img.webp" class="album-art">
-                        A song
-                        <audio controls>
-                            <source src="aud/nice_sound.mp3" type="audio/mp3">
-                        </audio>
-                    </div>
-                    <div class="song">
-                        <img src ="img/sample_img.webp" class="album-art">
-                        A song
-                        <audio controls>
-                            <source src="aud/nice_sound.mp3" type="audio/mp3">
-                        </audio>
-                    </div>
                 </div>
             </div>
             <!-- Song Add Block -->
             <div>
                 <h1>Add Songs</h1>
-                <form>
+                <form id="song_form"> <!-- TODO: Implement search functionality-->
                     <label for="song_search">Search:</label>
                     <input type="text" id="song_search" name="song_search">
+                    <input type="submit" value="Submit">
                 </form>
+                <script>
+                    document.getElementById("song_form").onsubmit = function(event) {
+                        var inputField = document.getElementById("song_search");
+                        if (inputField.value.trim() === "") {
+                            alert("Please enter a song title.");
+                            event.preventDefault();
+                        }
+                    };
+                </script>
                 <div class="container">
                     <div class="song">
                         <img src ="img/sample_img.webp" class="album-art">
-                        A song
+                        A bad song
                         <audio controls>
                             <source src="aud/nice_sound.mp3" type="audio/mp3">
                         </audio>
-                        <img src ="img/add.png" class="album-art">
+                        <img src ="img/add.png" class="album-art" onclick="addSong(this)">
                     </div>
                     <div class="song">
                         <img src ="img/sample_img.webp" class="album-art">
-                        A song
+                        A great song
                         <audio controls>
                             <source src="aud/nice_sound.mp3" type="audio/mp3">
                         </audio>
-                        <img src ="img/add.png" class="album-art">
+                        <img src ="img/add.png" class="album-art" onclick="addSong(this)">
                     </div>
                     <div class="song">
                         <img src ="img/sample_img.webp" class="album-art">
-                        A song
+                        A happy song
                         <audio controls>
                             <source src="aud/nice_sound.mp3" type="audio/mp3">
                         </audio>
-                        <img src ="img/add.png" class="album-art">
+                        <img src ="img/add.png" class="album-art" onclick="addSong(this)">
                     </div>
                     <div class="song">
                         <img src ="img/sample_img.webp" class="album-art">
-                        A song
+                        A weird song
                         <audio controls>
                             <source src="aud/nice_sound.mp3" type="audio/mp3">
                         </audio>
-                        <img src ="img/add.png" class="album-art">
+                        <img src ="img/add.png" class="album-art" onclick="addSong(this)">
                     </div>
                     <div class="song">
                         <img src ="img/sample_img.webp" class="album-art">
-                        A song
+                        An sad song
                         <audio controls>
                             <source src="aud/nice_sound.mp3" type="audio/mp3">
                         </audio>
-                        <img src ="img/add.png" class="album-art">
+                        <img src ="img/add.png" class="album-art" onclick="addSong(this)">
                     </div>
                     <div class="song">
                         <img src ="img/sample_img.webp" class="album-art">
-                        A song
+                        A meh song
                         <audio controls>
                             <source src="aud/nice_sound.mp3" type="audio/mp3">
                         </audio>
-                        <img src ="img/add.png" class="album-art">
+                        <img src ="img/add.png" class="album-art" onclick="addSong(this)">
                     </div>
                 </div>
             </div>
@@ -125,23 +101,23 @@
             <div>
                 <h1>Select DJ</h1>
                 <div class="container">
-                    <div class="dj">
+                    <div class="dj" onclick="toggleActive(this)">
                         <img src ="img/sample_img.webp" class="album-art">
                         DJ Bunny
                     </div>
-                    <div class="dj">
+                    <div class="dj" onclick="toggleActive(this)">
                         <img src ="img/sample_img.webp" class="album-art">
                         DJ Rabbit
                     </div>
-                    <div class="dj">
+                    <div class="dj" onclick="toggleActive(this)">
                         <img src ="img/sample_img.webp" class="album-art">
                         DJ Lagomorph
                     </div>
-                    <div class="dj">
+                    <div class="dj" onclick="toggleActive(this)">
                         <img src ="img/sample_img.webp" class="album-art">
                         DJ Carrots
                     </div>
-                    <div class="dj">
+                    <div class="dj" onclick="toggleActive(this)">
                         <img src ="img/sample_img.webp" class="album-art">
                         DJ Hay
                     </div>
@@ -153,10 +129,14 @@
                 <div style="height: auto; width: 600px; border: 1px solid gold; padding: 10px;  ">
                     <form>
                         <label for="start_time">Start Time:</label>
-                        <input type="datetime" id="start_time" name="start_time">
+                        <input type="text" id="start_time" name="start_time">
                         <label for="end_time">End Time:</label>
-                        <input type="datetime" id="end_time" name="end_time">   
+                        <input type="text" id="end_time" name="end_time">
+                        <input type="button" value="Check Timeslot" onclick="validateTimes()">
                     </form>
+                    <div id="error-popup" style="display: none;">
+                        <p id="error-message" style="color: red;"></p>
+                    </div>
                 </div>
             </div>
             <button class="submit-button">Submit</button>
