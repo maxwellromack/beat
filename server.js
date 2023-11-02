@@ -9,8 +9,15 @@ app.listen(8080);
 
 // Display Pages
 app.get('/producer', function (req, res) {
-    var username = "user";
+    var username = "Producer User";
     res.render('pages/producer', {
         username: username
     });
 });
+
+app.get('/listener', function (req, res) {
+    var username = "Jimmy";
+    res.render('pages/listener', {
+        username: username
+    });
+})
