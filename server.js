@@ -20,4 +20,12 @@ app.get('/listener', function (req, res) {
     res.render('pages/listener', {
         username: username
     });
-})
+});
+
+app.get('/dj', function (req, res) {
+    var username = "DJ User";
+    res.render('pages/dj', {
+        username: username
+    });
+});
+
