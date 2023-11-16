@@ -77,6 +77,13 @@
     margin-right: 10px; /* Add margin to separate the image from the text */
 }
 
+.add-button {
+    width: 50px; /* Set the width of the album image */
+    height: 50px; /* Set the height of the album image */
+    margin-right: 10px; /* Add margin to separate the image from the text */
+    float: right;
+}
+
 /* Submit Button */
 .submit-button {
     background-color: greenyellow;
@@ -98,4 +105,9 @@ body {
     font-family: Helvetica, sans-serif;
     background-color: #737373;
     color: #333333;;
+}
+
+/* Inline Text */
+.inline {
+    display:inline;
 }

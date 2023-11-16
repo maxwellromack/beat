@@ -8,6 +8,7 @@ var app = express();
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.listen(8080);
+app.use(express.urlencoded({ extended: true }));
 
 // Connect to MongoDB
 mongoose.connect('mongodb://localhost:27017/database')
@@ -20,6 +21,7 @@ mongoose.connect('mongodb://localhost:27017/database')
 
 // Database Management Paths
 app.post('/database/songs', async (req, res) => {   // Add song to database
+    console.log(req.body);
     const { title, artist, album, year, album_art } = req.body;
     try {
         const new_song = await Song.create({ title, artist, album, year, album_art });
