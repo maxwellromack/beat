@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const song_schema = new mongoose.Schema({
+const songSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true
@@ -11,6 +11,24 @@ const song_schema = new mongoose.Schema({
     album_art: String   // Stored as a URL to image
 });
 
-const Song = mongoose.model('Song', song_schema);
+const playlistSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    songs: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Song'
+    }],
+    dj_name: String,
+    start_time: String,
+    end_time: String
+});
 
-module.exports = Song;
+const Song = mongoose.model('Song', songSchema);
+const Playlist = mongoose.model('Playlist', playlistSchema);
+
+module.exports = {
+    Song,
+    Playlist
+};

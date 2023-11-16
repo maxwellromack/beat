@@ -2,7 +2,7 @@
 var express = require('express');
 const mongoose = require('mongoose');
 const ejs = require('ejs');
-const Song = require('./model.js');
+const { Song, Playlist } = require('./model.js');
 
 var app = express();
 app.set('view engine', 'ejs');
@@ -24,8 +24,8 @@ app.post('/database/songs', async (req, res) => {   // Add song to database
     console.log(req.body);
     const { title, artist, album, year, album_art } = req.body;
     try {
-        const new_song = await Song.create({ title, artist, album, year, album_art });
-        res.status(201).json(new_song);
+        const newSong = await Song.create({ title, artist, album, year, album_art });
+        res.status(201).json(newSong);
     }
     catch (err) {
         res.status(400).json({ error: err.message })
@@ -38,6 +38,20 @@ app.get('/database/songs', async (req, res) => {    // Get songs from database
         res.json(songs);
     } catch (err) {
         res.status(500).json({ error: err.message });
+    }
+});
+
+app.get('/database/songs/:id', async (req, res) => {    // Get a song based on its ID
+    const songId = req.params.id;
+    try {
+        const song = await Song.findById(songId);
+        if (!song) {
+            return res.status(404).json({ error: 'Song not found' });
+        }
+        res.json(song);
+    } catch (error) {
+        console.error('Error fetching song:', error);
+        res.status(500).json({ error: 'Error fetching song' });
     }
 });
 
@@ -70,6 +84,25 @@ app.delete('/database/songs/:title/:artist', async (req, res) => {  // Delete a 
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
+});
+
+app.post('/database/playlist', (req, res) => {  // Add a playlist to the database
+    const playlistData = req.body;
+    console.log(req.body);
+    const newPlaylist = new Playlist({
+        name: playlistData.name,
+        songs: playlistData.songs,
+        dj_name: playlistData.dj_name,
+        start_time: playlistData.start_time,
+        end_time: playlistData.end_time,
+    });
+    newPlaylist.save()
+        .then(savedPlaylist => {
+            res.status(201).json({ message: 'Playlist saved successfully', playlist: savedPlaylist });
+        })
+        .catch(error => {
+            res.status(500).json({ error: 'Error saving playlist', message: error.message });
+        });
 });
 
 // Display Pages
