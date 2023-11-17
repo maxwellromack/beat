@@ -82,10 +82,4 @@ function showErrorPopup(errorPopup) {
     }, 10000);
 }
 
-window.onload = function() {
-    const storedSongs = JSON.parse(localStorage.getItem('selectedSongs'));
-    if (storedSongs) {
-        selectedSongs = storedSongs;
-        display_selected_songs();
-    }
-};
+
